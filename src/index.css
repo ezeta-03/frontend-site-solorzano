@@ -1,0 +1,156 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply font-body text-navy antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading;
+  }
+}
+
+@layer components {
+  /* ── BUTTONS ── */
+  .btn-gold {
+    @apply inline-flex items-center gap-2 bg-gold text-white font-body font-bold text-sm px-6 py-3 rounded
+           transition-all duration-200 hover:-translate-y-0.5 hover:shadow-gold-lg hover:bg-gold-dark
+           active:translate-y-0;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center gap-2 border border-white/30 text-white font-body font-bold text-sm
+           px-6 py-3 rounded transition-all duration-200 hover:border-gold hover:text-gold
+           active:scale-95;
+  }
+
+  .btn-navy {
+    @apply inline-flex items-center gap-2 bg-navy text-white font-body font-bold text-sm px-6 py-3 rounded
+           transition-all duration-200 hover:bg-navy-2 hover:-translate-y-0.5 hover:shadow-card
+           active:translate-y-0;
+  }
+
+  /* ── SECTION LABEL ── */
+  .section-eyebrow {
+    @apply flex items-center gap-3 text-gold font-body font-bold text-xs tracking-[4px] uppercase mb-3;
+  }
+  .section-eyebrow::before,
+  .section-eyebrow::after {
+    content: '';
+    @apply block h-px w-8 bg-gold flex-shrink-0;
+  }
+
+  /* ── SECTION TITLE ── */
+  .section-title {
+    @apply font-heading font-black text-4xl md:text-5xl text-navy tracking-tight uppercase;
+  }
+
+  .section-title-white {
+    @apply font-heading font-black text-4xl md:text-5xl text-white tracking-tight uppercase;
+  }
+
+  /* ── CARD ── */
+  .card-service {
+    @apply relative overflow-hidden rounded-lg cursor-pointer;
+  }
+
+  .card-service-overlay {
+    @apply absolute inset-0 bg-gradient-card transition-opacity duration-300;
+  }
+
+  /* ── NAV LINK ── */
+  .nav-link {
+    @apply relative font-body font-semibold text-sm text-navy/70 pb-0.5 transition-colors duration-200
+           hover:text-navy;
+  }
+  .nav-link::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-0 h-0.5 bg-gold transition-all duration-250;
+  }
+  .nav-link:hover::after {
+    @apply w-full;
+  }
+  .nav-link-white {
+    @apply relative font-body font-semibold text-sm text-white/70 pb-0.5 transition-colors duration-200
+           hover:text-white;
+  }
+  .nav-link-white::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-0 h-0.5 bg-gold transition-all duration-[250ms];
+  }
+  .nav-link-white:hover::after {
+    @apply w-full;
+  }
+
+  /* ── FLEET CARD ── */
+  .fleet-card {
+    @apply relative overflow-hidden rounded-lg border border-white/10 transition-all duration-300
+           hover:border-gold hover:shadow-gold;
+  }
+
+  /* ── JOB ITEM ── */
+  .job-item {
+    @apply border border-white/10 rounded-lg p-5 transition-all duration-200 cursor-pointer
+           hover:border-gold hover:shadow-gold bg-white/5;
+  }
+
+  /* ── FORM INPUT ── */
+  .form-input {
+    @apply w-full bg-white border border-gray-200 rounded px-4 py-3 text-sm font-body text-navy
+           placeholder:text-gray-400 focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold
+           transition-colors duration-200;
+  }
+
+  .form-select {
+    @apply w-full bg-white border border-gray-200 rounded px-4 py-3 text-sm font-body text-navy
+           focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold
+           transition-colors duration-200 appearance-none cursor-pointer;
+  }
+
+  .form-textarea {
+    @apply w-full bg-white border border-gray-200 rounded px-4 py-3 text-sm font-body text-navy
+           placeholder:text-gray-400 focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold
+           transition-colors duration-200 resize-none;
+  }
+
+  /* ── UPLOAD ZONE ── */
+  .upload-zone {
+    @apply border-2 border-dashed border-white/20 rounded-lg p-8 text-center cursor-pointer
+           transition-all duration-300 hover:border-gold hover:bg-gold/5;
+  }
+
+  /* ── PLAY BUTTON ── */
+  .play-btn {
+    @apply w-16 h-16 rounded-full bg-gold flex items-center justify-center cursor-pointer
+           transition-transform duration-200 hover:scale-110 animate-pulse-ring;
+  }
+}
+
+@layer utilities {
+  /* Animation delays for stagger effects */
+  .delay-0   { animation-delay: 0ms; }
+  .delay-100 { animation-delay: 100ms; }
+  .delay-200 { animation-delay: 200ms; }
+  .delay-300 { animation-delay: 300ms; }
+  .delay-400 { animation-delay: 400ms; }
+  .delay-500 { animation-delay: 500ms; }
+  .delay-600 { animation-delay: 600ms; }
+  .delay-700 { animation-delay: 700ms; }
+  .delay-800 { animation-delay: 800ms; }
+
+  /* Transition duration 250ms (not in default scale) */
+  .duration-250 { transition-duration: 250ms; }
+
+  /* Text balance */
+  .text-balance { text-wrap: balance; }
+}
