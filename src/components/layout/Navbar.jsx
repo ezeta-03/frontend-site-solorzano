@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
 import { ChevronDown, Menu, X, ArrowRight } from 'lucide-react'
+import logoImg from '@/img/logos/logo-solorzano-nav.png'
 
 const NAV_LINKS = [
   { label: 'Servicios', href: '/servicios' },
@@ -63,19 +64,8 @@ export default function Navbar() {
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between h-16">
 
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-2 group">
-            <div className="w-9 h-9 bg-gold rounded-full flex items-center justify-center
-                            group-hover:scale-105 transition-transform duration-200">
-              <span className="text-white font-heading font-black text-sm">S</span>
-            </div>
-            <div>
-              <span className="font-heading font-black text-navy text-lg leading-none tracking-wide">
-                SOLORZANO
-              </span>
-              <span className="block text-[9px] font-body font-semibold text-navy/40 tracking-[3px] uppercase leading-none">
-                Holding Group
-              </span>
-            </div>
+          <Link to="/" className="flex items-center">
+            <img src={logoImg} alt="Solorzano Holding Group" className="h-10 w-auto" />
           </Link>
 
           {/* Desktop nav */}
@@ -127,7 +117,7 @@ export default function Navbar() {
 
           {/* CTA */}
           <div className="hidden md:block">
-            <Link to="/cotizar" className="btn-gold">
+            <Link to="/cotizar" className="btn-shimmer">
               Cotizar
               <ArrowRight size={15} />
             </Link>
@@ -171,7 +161,7 @@ export default function Navbar() {
                 )}
               </div>
             ))}
-            <Link to="/cotizar" className="btn-gold mt-4 justify-center">
+            <Link to="/cotizar" className="btn-shimmer mt-4 justify-center">
               Cotizar <ArrowRight size={15} />
             </Link>
           </div>

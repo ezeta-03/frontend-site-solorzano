@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import footerLogo from '@/img/logos/logo-solorzano-footer.png'
 
 const MENU = [
   { label: 'Nosotros', href: '/nosotros' },
@@ -10,33 +11,18 @@ const MENU = [
 export default function Footer() {
   return (
     <footer className="bg-navy text-white">
-      <div className="max-w-7xl mx-auto px-6 py-16 grid grid-cols-2 md:grid-cols-4 gap-10">
+      <div className="max-w-7xl mx-auto px-6 py-16 grid grid-cols-2 md:grid-cols-5 gap-10">
 
-        {/* Logo + copy */}
-        <div className="col-span-2 md:col-span-1">
-          <div className="flex items-center gap-2 mb-4">
-            <div className="w-9 h-9 bg-gold rounded-full flex items-center justify-center">
-              <span className="text-white font-heading font-black text-sm">S</span>
-            </div>
-            <div>
-              <span className="font-heading font-black text-white text-lg leading-none tracking-wide">
-                SOLORZANO
-              </span>
-              <span className="block text-[9px] font-body font-semibold text-white/30 tracking-[3px] uppercase leading-none">
-                Holding Group
-              </span>
-            </div>
-          </div>
-          <p className="text-sm text-white/40 font-body leading-relaxed max-w-[220px]">
-            Empresa peruana con más de 12 años de trayectoria en transporte, minería y construcción.
-          </p>
+        {/* Logo */}
+        <div className="col-span-2 md:col-span-1 flex items-start">
+          <Link to="/">
+            <img src={footerLogo} alt="Solorzano Holding Group" className="h-14 w-auto" />
+          </Link>
         </div>
 
-        {/* Menu */}
+        {/* Menú */}
         <div>
-          <h4 className="font-heading font-bold text-sm tracking-[3px] uppercase text-white/30 mb-4">
-            Menú
-          </h4>
+          <h4 className="font-body font-bold text-sm text-white mb-4">Menú</h4>
           <ul className="flex flex-col gap-2">
             {MENU.map((item) => (
               <li key={item.href}>
@@ -53,47 +39,41 @@ export default function Footer() {
 
         {/* Grupo */}
         <div>
-          <h4 className="font-heading font-bold text-sm tracking-[3px] uppercase text-white/30 mb-4">
-            Grupo Solorzano
-          </h4>
-          <ul className="flex flex-col gap-2">
+          <h4 className="font-body font-bold text-sm text-white mb-4">Grupo Solorzano Velariz</h4>
+          {/* <ul className="flex flex-col gap-2">
             <li>
               <a href="#" className="text-sm font-body text-white/60 hover:text-gold transition-colors duration-200">
                 Velariz
               </a>
             </li>
-          </ul>
+          </ul> */}
         </div>
 
-        {/* Contacto */}
-        <div>
-          <div className="mb-6">
-            <h4 className="font-heading font-bold text-sm tracking-[3px] uppercase text-white/30 mb-1">
-              Sede Principal
-            </h4>
+        {/* Sede + Teléfono */}
+        <div className="flex flex-col gap-5">
+          <div>
+            <h4 className="font-body font-bold text-sm text-white mb-1">Sede Principal</h4>
             <p className="text-sm font-body text-white/60">Huancayo, Junín — Perú</p>
           </div>
-          <div className="mb-6">
-            <h4 className="font-heading font-bold text-sm tracking-[3px] uppercase text-white/30 mb-1">
-              Teléfono
-            </h4>
+          <div>
+            <h4 className="font-body font-bold text-sm text-white mb-1">Teléfono</h4>
             <p className="text-sm font-body text-white/60">+51 (Agregar número)</p>
           </div>
-          <div className="mb-6">
-            <h4 className="font-heading font-bold text-sm tracking-[3px] uppercase text-white/30 mb-1">
-              Email Comercial
-            </h4>
+        </div>
+
+        {/* Email + RUC */}
+        <div className="flex flex-col gap-5">
+          <div>
+            <h4 className="font-body font-bold text-sm text-white mb-1">Email Comercial</h4>
             <a
               href="mailto:comercial@solorzanomys.com.pe"
-              className="text-sm font-body text-gold hover:text-gold-light transition-colors"
+              className="text-sm font-body text-white/60 hover:text-gold transition-colors"
             >
               comercial@solorzanomys.com.pe
             </a>
           </div>
           <div>
-            <h4 className="font-heading font-bold text-sm tracking-[3px] uppercase text-white/30 mb-1">
-              RUC
-            </h4>
+            <h4 className="font-body font-bold text-sm text-white mb-1">RUC</h4>
             <p className="text-sm font-body text-white/60">20600XXXXXX</p>
           </div>
         </div>

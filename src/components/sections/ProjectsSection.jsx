@@ -17,6 +17,8 @@ function ProjectCard({ project, delay }) {
       <img
         src={project.image}
         alt={project.client}
+        loading="lazy"
+        decoding="async"
         className="w-full h-56 object-cover transition-transform duration-500 group-hover:scale-105"
       />
       {/* Gradient */}
@@ -29,9 +31,7 @@ function ProjectCard({ project, delay }) {
       </div>
 
       {/* Arrow */}
-      <div className="absolute top-4 right-4 w-8 h-8 rounded bg-gold/0 group-hover:bg-gold
-                      flex items-center justify-center transition-all duration-200 border border-white/20
-                      group-hover:border-gold">
+      <div className="absolute top-4 right-4 w-8 h-8 rounded bg-gold flex items-center justify-center">
         <ArrowUpRight size={14} className="text-white" />
       </div>
 
@@ -72,15 +72,15 @@ export default function ProjectsSection() {
         </div>
 
         {/* Tabs */}
-        <div className="flex border-b border-gray-200 mb-8">
+        <div className="flex items-center gap-1 border-b border-gray-200 mb-8">
           {PROJECT_TABS.map((tab) => (
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`font-body font-bold text-sm px-6 py-3 border-b-2 transition-all duration-200 ${
+              className={`font-body font-bold text-sm px-6 py-3 rounded-t transition-all duration-200 ${
                 activeTab === tab.id
-                  ? 'border-gold text-navy bg-white'
-                  : 'border-transparent text-navy/50 hover:text-navy'
+                  ? 'bg-navy text-white'
+                  : 'text-navy/50 hover:text-navy'
               }`}
             >
               {tab.label}
@@ -89,7 +89,7 @@ export default function ProjectsSection() {
         </div>
 
         {/* Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-24">
           {filtered.length > 0
             ? filtered.map((p, i) => <ProjectCard key={p.id} project={p} delay={i * 100} />)
             : (
@@ -110,17 +110,16 @@ function ClientLogos() {
   const { ref, inView } = useInView()
 
   return (
-    <div ref={ref} className="flex items-center justify-center gap-8 md:gap-16 flex-wrap">
+    <div ref={ref} className="flex items-center justify-center gap-10 md:gap-16 flex-wrap">
       {CLIENT_LOGOS.map((logo, i) => (
         <a
           key={logo.name}
           href={logo.url}
-          className={`font-heading font-black text-base text-navy/30 hover:text-gold
-                      transition-all duration-300 tracking-wide uppercase
-                      ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+          className={`transition-all duration-500 grayscale opacity-50 hover:grayscale-0 hover:opacity-100
+                      ${inView ? 'opacity-50 translate-y-0' : 'opacity-0 translate-y-4'}`}
           style={{ transitionDelay: `${i * 80}ms` }}
         >
-          {logo.name}
+          <img src={logo.image} alt={logo.name} loading="lazy" decoding="async" className="h-10 w-auto object-contain" />
         </a>
       ))}
     </div>

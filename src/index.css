@@ -2,6 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
+@keyframes shimmerPass {
+  0%    { transform: translateX(-150%); }
+  30%   { transform: translateX( 250%); }
+  30.1% { transform: translateX(-150%); }
+  100%  { transform: translateX(-150%); }
+}
+
+@keyframes pulseBreathe {
+  0%, 100% { transform: scale(1); }
+  50%       { transform: scale(1.05); }
+}
+
+.bg-gradient-hero {
+  background: linear-gradient(to top, rgba(13,27,46,0.92) 5%, rgba(13,27,46,0.2)) !important;
+}
+
 @layer base {
   *, *::before, *::after {
     box-sizing: border-box;
@@ -25,6 +41,37 @@
   .btn-gold {
     @apply inline-flex items-center gap-2 bg-gold text-white font-body font-bold text-sm px-6 py-3 rounded
            transition-all duration-200 hover:-translate-y-0.5 hover:shadow-gold-lg hover:bg-gold-dark
+           active:translate-y-0;
+  }
+
+  .btn-shimmer {
+    @apply inline-flex items-center gap-2 font-body font-bold text-sm px-6 py-3 rounded relative overflow-hidden;
+    background: #E8A020;
+    color: white;
+  }
+  .btn-shimmer::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.38) 50%, transparent 100%);
+    transform: translateX(-150%);
+    animation: shimmerPass 10s linear infinite;
+  }
+  .btn-shimmer:hover::after {
+    background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.65) 50%, transparent 100%);
+    animation: shimmerPass 0.7s linear forwards;
+  }
+
+  .btn-pulse {
+    @apply inline-flex items-center gap-2 bg-gold text-white font-body font-bold text-sm px-6 py-3 rounded;
+    animation: pulseBreathe 2s ease-in-out infinite;
+    will-change: transform;
+  }
+
+  .btn-hover {
+    @apply inline-flex items-center gap-2 bg-transparent font-body font-bold text-sm px-6 py-3 rounded
+           border-2 border-gold text-gold
+           transition-all duration-200 hover:bg-gold hover:text-white hover:-translate-y-0.5
            active:translate-y-0;
   }
 

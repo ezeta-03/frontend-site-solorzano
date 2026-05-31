@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom'
 import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react'
 import { HERO_SLIDES } from '@/data/constants'
 
-export default function HeroSection() {
-  const [current, setCurrent] = useState(0)
+export default function HeroSection({ initialSlide = 0 }) {
+  const [current, setCurrent] = useState(initialSlide)
   const [animKey, setAnimKey] = useState(0)
 
   const goTo = (idx) => {
@@ -31,6 +31,7 @@ export default function HeroSection() {
           key={slide.id}
           src={slide.image}
           alt=""
+          decoding="async"
           className="absolute inset-0 w-full h-full object-cover animate-ken-burns"
         />
         {/* Gradient overlay */}
@@ -43,8 +44,8 @@ export default function HeroSection() {
         className="relative z-10 h-full flex flex-col justify-center px-8 md:px-16 max-w-7xl mx-auto"
       >
         {/* Eyebrow */}
-        <div className="flex items-center gap-3 mb-4 animate-hero-fade-up" style={{ animationDelay: '0.1s' }}>
-          <span className="block h-px w-10 bg-gold flex-shrink-0" />
+        <div className="flex items-center gap-3 mb-4 animate-hero-fade-up" style={{ animationDelay: '0.05s' }}>
+          <span className="block h-0.5 bg-gold flex-shrink-0 animate-grow-bar" />
           <span className="text-gold font-body font-bold text-xs tracking-[4px] uppercase">
             {slide.eyebrow}
           </span>
@@ -52,18 +53,19 @@ export default function HeroSection() {
 
         {/* Title */}
         <h1
-          className="font-heading font-black text-5xl md:text-7xl text-white uppercase leading-none mb-4 animate-hero-slide"
-          style={{ animationDelay: '0.15s' }}
+          className="font-heading font-black text-5xl md:text-7xl text-white uppercase leading-none mb-2 animate-hero-slide"
         >
-          {slide.title}{' '}
-          <span className="text-gold">{slide.titleAccent}</span>
-          <br />
-          <span className="text-3xl md:text-5xl font-bold text-white/70">{slide.subtitle}</span>
+          {slide.title}{slide.titleAccent && <>{slide.titleSpace && ' '}<span className="text-gold">{slide.titleAccent}</span></>}
         </h1>
 
+        {/* Subtitle */}
+        <p className="font-body text-[13px] text-white/70 mt-1.5 mb-4 animate-hero-fade-up">
+          {slide.subtitle}
+        </p>
+
         {/* CTA */}
-        <div className="animate-hero-fade-up" style={{ animationDelay: '0.4s' }}>
-          <Link to={slide.ctaHref} className="btn-gold mt-2">
+        <div className="animate-hero-fade-up" style={{ animationDelay: '0.6s' }}>
+          <Link to={slide.ctaHref} className="btn-pulse mt-2">
             {slide.cta}
             <ArrowRight size={16} />
           </Link>

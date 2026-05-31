@@ -32,6 +32,7 @@ export default {
         'logo-fade':      'logoFade 0.6s ease both',
         'grow-bar':       'growBar 0.5s ease 0.5s both',
         'ken-burns':      'kenBurns 8s ease-in-out infinite alternate',
+        'shimmer':        'shimmer 2.5s linear infinite',
         'tab-slide':      'tabSlide 0.3s ease both',
         'form-slide-up':  'formSlideUp 0.5s ease both',
       },
@@ -74,6 +75,10 @@ export default {
           from: { transform: 'scale(1)' },
           to:   { transform: 'scale(1.06)' },
         },
+        shimmer: {
+          '0%':   { backgroundPosition: '200% center' },
+          '100%': { backgroundPosition: '-200% center' },
+        },
         tabSlide: {
           from: { opacity: '0', transform: 'translateY(20px)' },
           to:   { opacity: '1', transform: 'translateY(0)' },
@@ -84,7 +89,7 @@ export default {
         },
       },
       backgroundImage: {
-        'gradient-hero': 'linear-gradient(to right, rgba(13,27,46,0.92) 40%, rgba(13,27,46,0.4))',
+        'gradient-hero': 'linear-gradient(to top, rgba(13,27,46,0.92) 40%, rgba(13,27,46,0.2))',
         'gradient-card': 'linear-gradient(to top, rgba(13,27,46,0.95) 0%, transparent 60%)',
       },
       boxShadow: {

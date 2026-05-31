@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(npm install -g firebase-tools)",
+      "PowerShell(firebase --version)"
+    ]
+  }
+}

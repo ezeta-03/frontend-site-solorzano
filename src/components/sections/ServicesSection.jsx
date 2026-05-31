@@ -22,10 +22,12 @@ function ServiceCard({ service, index }) {
       className={`card-service transition-all duration-700 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
       style={{ transitionDelay: `${delay}ms` }}
     >
-      <Link to={`/servicios#${service.id}`} className="block group relative">
+      <Link to={service.href} className="block group relative">
         <img
           src={service.image}
           alt={service.title}
+          loading="lazy"
+          decoding="async"
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
           style={{ height: service.large ? '280px' : '220px' }}
         />
@@ -49,7 +51,7 @@ function ServiceCard({ service, index }) {
           <h3 className="font-heading font-bold text-xl text-white uppercase mb-2 leading-tight">
             {service.title}
           </h3>
-          <span className="btn-gold text-xs px-4 py-2 inline-flex items-center gap-1.5">
+          <span className="btn-hover text-xs px-4 py-2 inline-flex items-center gap-1.5">
             Ver más <ArrowUpRight size={12} />
           </span>
         </div>

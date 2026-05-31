@@ -2,44 +2,54 @@ import { ArrowUpRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { useInView } from '@/hooks/useInView'
 import { FLEET_CATEGORIES } from '@/data/constants'
+import maqPrincipal from '@/img/maquinaria/maq_principal.webp'
 
 export default function FleetSection() {
   const { ref, inView } = useInView()
 
   return (
-    <section className="py-20 px-6 bg-white">
-      <div className="max-w-7xl mx-auto">
+    <section className="bg-white">
 
-        {/* Maquinaria header */}
-        <div className="grid md:grid-cols-2 gap-10 items-center mb-16">
-          <div
-            ref={ref}
-            className={`transition-all duration-700 ${inView ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'}`}
-          >
-            <h2 className="section-title mb-4">Maquinaria y Equipos</h2>
-            <p className="font-body text-navy/60 text-sm leading-relaxed mb-6 max-w-md">
-              Ofrecemos soluciones integrales para la industria minera y de construcción, con equipos
-              especializados y personal certificado listo para el proyecto más exigente.
-            </p>
-            <Link to="/flota" className="btn-gold">Ver flota completa <ArrowUpRight size={15} /></Link>
-          </div>
-          <div className={`transition-all duration-700 delay-200 ${inView ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'}`}>
-            <img
-              src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=800&q=70"
-              alt="Excavadora Volvo EC360"
-              className="rounded-xl w-full h-64 object-cover shadow-card"
-            />
-          </div>
+      {/* Header con imagen de fondo */}
+      <div className="relative overflow-hidden" style={{ minHeight: '800px' }}>
+        {/* Imagen de fondo */}
+        <img
+          src={maqPrincipal}
+          alt="Maquinaria Solorzano"
+          loading="lazy"
+          decoding="async"
+          className="absolute inset-0 w-full h-full object-cover"
+          style={{ objectPosition: 'center 40%' }}
+        />
+        {/* Overlay degradado: oscuro izquierda → transparente derecha */}
+        {/* <div className="absolute inset-0 bg-gradient-to-r from-navy/90 via-navy/50 to-transparent" /> */}
+
+        {/* Texto */}
+        <div
+          ref={ref}
+          className={`relative z-10 max-w-7xl mx-auto px-6 py-16 transition-all duration-700
+                      ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
+        >
+          <h2 className="section-title">Maquinaria y Equipos</h2>
+          <p className="font-body text-dark/70 text-sm leading-relaxed mb-6 max-w-lg">
+            Ofrecemos soluciones integrales para la industria minera y de construcción, con equipos
+            especializados y personal certificado listo para el proyecto más exigente.
+          </p>
+          <Link to="/flota" className="btn-pulse inline-flex items-center gap-2">
+            Ver flota completa <ArrowUpRight size={15} />
+          </Link>
         </div>
+      </div>
 
-        {/* Flota propia */}
-        <div className="bg-navy rounded-2xl p-8">
+      {/* Flota propia */}
+      <div className="bg-navy py-10 px-6">
+        <div className="max-w-7xl mx-auto">
           <div className="flex items-center justify-between mb-6">
             <h3 className="font-heading font-black text-2xl text-white uppercase tracking-wide">
               Flota Propia
             </h3>
-            <Link to="/flota" className="btn-outline text-xs px-4 py-2">
-              Ver flota completa
+            <Link to="/flota" className="btn-pulse text-xs px-4 py-2 inline-flex items-center gap-1.5">
+              Ver flota completa <ArrowUpRight size={13} />
             </Link>
           </div>
 
@@ -61,33 +71,37 @@ function FleetCard({ category, delay }) {
   return (
     <div
       ref={ref}
-      className={`fleet-card transition-all duration-700 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
+      className={`bg-white rounded-xl overflow-hidden border border-gray-100 hover:shadow-gold transition-all duration-300
+                  ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
       style={{ transitionDelay: `${delay}ms` }}
     >
       <Link to="/flota" className="block group">
         {/* Category label */}
         <div className="flex items-center justify-between px-4 pt-4 pb-2">
-          <span className="font-heading font-bold text-xs text-white/60 uppercase tracking-[2px]">
+          <span className="font-heading font-bold text-xs text-navy uppercase tracking-[2px]">
             {category.label}
           </span>
-          <ArrowUpRight size={14} className="text-white/30 group-hover:text-gold transition-colors" />
+          <div className="w-7 h-7 rounded bg-gold flex items-center justify-center">
+            <ArrowUpRight size={14} className="text-white" />
+          </div>
         </div>
 
         {/* Image */}
-        <div className="overflow-hidden mx-4 rounded-lg mb-4">
+        <div className="overflow-hidden mx-3 rounded-lg mb-3">
           <img
             src={item.image}
             alt={item.name}
-            className="w-full h-32 object-cover transition-transform duration-500 group-hover:scale-105"
+            loading="lazy"
+            decoding="async"
+            className="w-full h-40 object-cover transition-transform duration-500 group-hover:scale-105"
           />
         </div>
 
         {/* Info */}
         <div className="px-4 pb-4">
-          <h4 className="font-body font-bold text-sm text-white leading-tight">{item.name}</h4>
-          <p className="font-body text-xs text-white/40 mt-0.5">{item.model}</p>
-          <button className="mt-3 text-[10px] font-bold text-gold border border-gold/30 hover:bg-gold hover:text-white
-                             rounded px-3 py-1.5 transition-all duration-200 uppercase tracking-wider w-full">
+          <h4 className="font-body font-bold text-sm text-navy leading-tight">{item.name}</h4>
+          <p className="font-body text-xs text-navy/40 mt-0.5">{item.model}</p>
+          <button className="btn-navy mt-3 text-[10px] px-3 py-1.5 w-full justify-center">
             Ver flota
           </button>
         </div>

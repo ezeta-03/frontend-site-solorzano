@@ -1,23 +1,29 @@
 import { useState } from 'react'
-import { ArrowUpRight, Send } from 'lucide-react'
+import { Link, useSearchParams } from 'react-router-dom'
+import { ArrowUpRight } from 'lucide-react'
 import { useInView } from '@/hooks/useInView'
 import { SERVICES_LIST } from '@/data/constants'
+import fondoImg   from '@/img/contactanos/fondo.png'
+import personaImg from '@/img/contactanos/persona.png'
 
 const AREAS = ['Transporte', 'Minería', 'Construcción']
 
 export default function ContactSection() {
   const { ref, inView } = useInView()
+  const [searchParams] = useSearchParams()
+  const [submitted, setSubmitted] = useState(false)
   const [activeArea, setActiveArea] = useState('Transporte')
   const [form, setForm] = useState({
-    nombre: '', empresa: '', email: '', telefono: '', servicio: '', descripcion: '',
+    nombre: '', empresa: '', email: '', telefono: '',
+    servicio: searchParams.get('servicio') || '',
+    descripcion: '',
   })
 
   const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value })
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    // TODO: connect to backend / email service
-    alert('¡Solicitud enviada! Nos contactaremos contigo pronto.')
+    setSubmitted(true)
   }
 
   return (
@@ -29,42 +35,62 @@ export default function ContactSection() {
                       transition-all duration-700 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
         >
 
-          {/* Left panel — dark */}
-          <div className="bg-navy-2 p-10 flex flex-col justify-between relative overflow-hidden">
-            {/* Decorative bg text */}
-            <div className="absolute -bottom-4 -right-4 text-[120px] font-heading font-black
-                            text-white/[0.03] leading-none select-none pointer-events-none">
-              S
-            </div>
+          {/* Left panel — image background + person */}
+          <div className="relative overflow-hidden flex flex-col justify-between p-10" style={{ minHeight: '480px' }}>
 
-            <div>
-              <span className="inline-block text-[10px] font-bold tracking-[3px] uppercase
-                               bg-gold/20 text-gold border border-gold/30 rounded px-3 py-1.5 mb-6">
-                Trabajemos juntos
-              </span>
-              <div className="flex items-start justify-between">
-                <h2 className="font-heading font-black text-4xl text-white uppercase leading-tight">
-                  Hablemos de tu<br />
-                  <span className="text-gold">proyecto</span>
-                </h2>
-                <ArrowUpRight size={24} className="text-gold mt-1 flex-shrink-0" />
+            {/* Background image */}
+            <img
+              src={fondoImg}
+              alt=""
+              loading="lazy"
+              decoding="async"
+              className="absolute inset-0 w-full h-full object-cover"
+            />
+
+            {/* Dark overlay so text is readable */}
+            <div className="absolute inset-0 bg-navy/60" />
+
+            {/* Person image — anchored to bottom-right */}
+            <img
+              src={personaImg}
+              alt=""
+              loading="lazy"
+              decoding="async"
+              className="absolute bottom-0 right-0 h-full object-contain object-bottom pointer-events-none select-none"
+              style={{ left: '30%' }}
+            />
+
+            {/* Content */}
+            <div className="relative z-10">
+              <div className="flex items-start justify-between mb-6">
+                <span className="inline-block text-[10px] font-bold tracking-[3px] uppercase
+                                 bg-gold text-white rounded px-3 py-1.5">
+                  Trabajemos juntos
+                </span>
+                <div className="w-8 h-8 rounded bg-gold flex items-center justify-center flex-shrink-0">
+                  <ArrowUpRight size={16} className="text-white" />
+                </div>
               </div>
-              <p className="font-body text-sm text-white/50 mt-5 leading-relaxed max-w-xs">
+
+              <h2 className="font-heading font-black text-4xl text-white uppercase leading-tight mb-5">
+                Hablemos de tu<br />proyecto
+              </h2>
+              <p className="font-body text-sm text-white/70 leading-relaxed max-w-xs">
                 Ya sea transporte, minería, construcción o alquiler de maquinaria, nuestro equipo
                 está listo para brindarte una propuesta a la medida de tu operación.
               </p>
             </div>
 
             {/* Area buttons */}
-            <div className="mt-8 flex flex-wrap gap-2">
+            <div className="relative z-10 flex flex-wrap gap-2 mt-8">
               {AREAS.map((area) => (
                 <button
                   key={area}
                   onClick={() => setActiveArea(area)}
                   className={`font-body font-bold text-sm px-5 py-2.5 rounded transition-all duration-200 ${
                     activeArea === area
-                      ? 'bg-gold text-white shadow-gold'
-                      : 'bg-white/10 text-white/60 hover:bg-white/20 hover:text-white'
+                      ? 'bg-navy text-white'
+                      : 'bg-navy/70 text-white/70 hover:bg-navy hover:text-white'
                   }`}
                 >
                   {area}
@@ -73,8 +99,19 @@ export default function ContactSection() {
             </div>
           </div>
 
-          {/* Right panel — form */}
+          {/* Right panel — form / thank-you */}
           <div className="bg-white p-10">
+            {submitted ? (
+              <div className="h-full flex flex-col items-center justify-center text-center gap-6 py-8">
+                <div>
+                  <h2 className="font-heading font-black text-5xl text-navy uppercase mb-4">¡Gracias!</h2>
+                  <p className="font-body text-sm text-navy/60 leading-relaxed max-w-xs mx-auto">
+                    Hemos recibido tu registro. Nuestro equipo se comunicará contigo pronto.
+                  </p>
+                </div>
+                <Link to="/" className="btn-gold">Ver más servicios</Link>
+              </div>
+            ) : (
             <form onSubmit={handleSubmit} className="flex flex-col gap-4">
               <div className="grid grid-cols-2 gap-4">
                 <div>
@@ -170,11 +207,11 @@ export default function ContactSection() {
                 />
               </div>
 
-              <button type="submit" className="btn-gold justify-center mt-2">
+              <button type="submit" className="btn-gold justify-center mt-2 w-full">
                 Enviar solicitud
-                <Send size={15} />
               </button>
             </form>
+            )}
           </div>
         </div>
       </div>
