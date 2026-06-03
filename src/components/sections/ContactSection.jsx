@@ -3,12 +3,13 @@ import { Link, useSearchParams } from 'react-router-dom'
 import { ArrowUpRight } from 'lucide-react'
 import { useInView } from '@/hooks/useInView'
 import { SERVICES_LIST } from '@/data/constants'
-import fondoImg   from '@/img/contactanos/fondo.png'
-import personaImg from '@/img/contactanos/persona.png'
+import fondoImg    from '@/img/contactanos/fondo.png'
+import personasImg from '@/img/contactanos/personas.webp'
+import personaImg  from '@/img/contactanos/persona.png'
 
 const AREAS = ['Transporte', 'Minería', 'Construcción']
 
-export default function ContactSection() {
+export default function ContactSection({ personasBg = false, showPersona = true }) {
   const { ref, inView } = useInView()
   const [searchParams] = useSearchParams()
   const [submitted, setSubmitted] = useState(false)
@@ -38,27 +39,29 @@ export default function ContactSection() {
           {/* Left panel — image background + person */}
           <div className="relative overflow-hidden flex flex-col justify-between p-10" style={{ minHeight: '480px' }}>
 
-            {/* Background image */}
+            {/* Background */}
             <img
-              src={fondoImg}
+              src={personasBg ? personasImg : fondoImg}
               alt=""
               loading="lazy"
               decoding="async"
               className="absolute inset-0 w-full h-full object-cover"
             />
 
-            {/* Dark overlay so text is readable */}
+            {/* Dark overlay */}
             <div className="absolute inset-0 bg-navy/60" />
 
-            {/* Person image — anchored to bottom-right */}
-            <img
-              src={personaImg}
-              alt=""
-              loading="lazy"
-              decoding="async"
-              className="absolute bottom-0 right-0 h-full object-contain object-bottom pointer-events-none select-none"
-              style={{ left: '30%' }}
-            />
+            {/* persona.png — difuminada, centrada (solo en home) */}
+            {showPersona && (
+              <img
+                src={personaImg}
+                alt=""
+                loading="lazy"
+                decoding="async"
+                className="absolute inset-0 w-full h-full object-contain pointer-events-none select-none"
+                style={{ filter: 'blur(3px)', opacity: 0.35 }}
+              />
+            )}
 
             {/* Content */}
             <div className="relative z-10">

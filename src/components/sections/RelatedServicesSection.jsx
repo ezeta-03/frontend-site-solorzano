@@ -3,11 +3,12 @@ import { Link } from 'react-router-dom'
 import { ArrowUpRight, ChevronLeft, ChevronRight } from 'lucide-react'
 import { useInView } from '@/hooks/useInView'
 
-import img1 from '@/img/projects/construcción/1_volcan.webp'
-import img2 from '@/img/projects/minería/2_el_brocal.webp'
-import img3 from '@/img/maquinaria/maq_principal.webp'
-import img4 from '@/img/projects/construcción/2_cacray.png'
-import img5 from '@/img/projects/transporte/2_minera_volcan.png'
+import img1 from '@/img/otros_servicios/01_demolicion.webp'
+import img2 from '@/img/otros_servicios/02_explotacion.webp'
+import img3 from '@/img/otros_servicios/03_cortes.webp'
+import img4 from '@/img/otros_servicios/04_relleno.webp'
+import img5 from '@/img/otros_servicios/05_infraestructura.webp'
+import img6 from '@/img/otros_servicios/06_materiales.webp'
 
 const ALL_SERVICES = [
   { id: 'demolicion-desmonte',  title: 'Demolición y eliminación de desmonte',                    href: '/movimiento-de-tierra/demolicion-desmonte',  image: img1 },
@@ -15,6 +16,7 @@ const ALL_SERVICES = [
   { id: 'cortes-excavaciones',  title: 'Cortes y excavaciones profundas, masivas y localizadas',   href: '/movimiento-de-tierra/cortes-excavaciones',  image: img3 },
   { id: 'relleno-masivo',       title: 'Servicio de relleno masivo y localizado',                  href: '/movimiento-de-tierra/relleno-masivo',       image: img4 },
   { id: 'infraestructura-vial', title: 'Infraestructura Vial',                                     href: '/movimiento-de-tierra/infraestructura-vial', image: img5 },
+  { id: 'materiales-demolicion',title: 'Materiales de demolición y alquiler de maquinaria pesada', href: '/movimiento-de-tierra',                      image: img6 },
 ]
 
 // Show 3 cards at once → max shift = total - 3

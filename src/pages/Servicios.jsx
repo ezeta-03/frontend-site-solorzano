@@ -86,25 +86,25 @@ const FEATURES = [
 
 // ── Hero ──────────────────────────────────────────────────────────────────────
 function HeroBanner() {
-  const { ref, inView } = useInView()
   return (
     <div className="relative h-[520px] md:h-[600px] overflow-hidden">
       <img src={heroImg} alt="Servicios Solorzano" decoding="async"
            className="absolute inset-0 w-full h-full object-cover" />
       <div className="absolute inset-0 bg-gradient-hero" />
-      <div
-        ref={ref}
-        className={`relative z-10 h-full flex flex-col justify-end max-w-7xl mx-auto px-6 pb-16
-                    transition-all duration-700 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
-      >
-        <div className="flex items-center gap-3 mb-3">
-          <span className="block h-0.5 w-8 bg-gold" />
-          <span className="font-body text-[11px] font-bold tracking-[4px] uppercase text-gold">Lo que hacemos</span>
+      <div className="relative z-10 h-full flex flex-col justify-end max-w-7xl mx-auto px-6 pb-16">
+        {/* Eyebrow con línea animada */}
+        <div className="flex items-center gap-3 mb-3 animate-hero-fade-up" style={{ animationDelay: '0.05s' }}>
+          <span className="block h-0.5 bg-gold flex-shrink-0 animate-grow-bar" />
+          <span className="font-body text-[11px] font-bold tracking-[4px] uppercase text-gold">
+            Lo que hacemos
+          </span>
         </div>
-        <h1 className="font-heading font-black text-5xl md:text-7xl text-white uppercase leading-none mb-3">
+        {/* Título desliza desde la izquierda */}
+        <h1 className="font-heading font-black text-5xl md:text-7xl text-white uppercase leading-none mb-3 animate-hero-slide">
           Nuestros <span className="text-gold">servicios</span>
         </h1>
-        <p className="font-body text-[13px] text-white/70 mb-5 max-w-md leading-relaxed">
+        {/* Subtítulo aparece desde abajo */}
+        <p className="font-body text-[13px] text-white/70 mb-5 max-w-md leading-relaxed animate-hero-fade-up">
           Soluciones integrales para la industria minera y de construcción, con equipos especializados
           y personal certificado listo para el proyecto más exigente.
         </p>
@@ -165,20 +165,31 @@ function CategoriesSection() {
   return (
     <section className="py-16 px-6 bg-gray-site">
       <div className="max-w-7xl mx-auto">
-        <div
-          ref={ref}
-          className={`flex items-start justify-between border-t border-navy/20 pt-6 mb-10
-                      transition-all duration-700 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
-        >
+        <div ref={ref} className="flex items-start justify-between border-t border-navy/20 pt-6 mb-10">
           <div>
-            <h2 className="font-heading font-black text-3xl text-gold uppercase tracking-wide mb-1">
+            {/* Líneas crecen + eyebrow */}
+            <div className="flex items-center gap-3 mb-2">
+              <span className={`block h-px bg-gold flex-shrink-0 transition-all duration-500
+                               ${inView ? 'w-8 opacity-100' : 'w-0 opacity-0'}`} />
+              <span className={`font-body text-[10px] font-bold tracking-[4px] uppercase text-gold
+                               transition-all duration-500 delay-100
+                               ${inView ? 'opacity-100' : 'opacity-0'}`}>
+                Lo que ofrecemos
+              </span>
+            </div>
+            <h2 className={`font-heading font-black text-3xl text-navy uppercase tracking-wide mb-1
+                            transition-all duration-700 delay-150
+                            ${inView ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-6'}`}>
               Áreas de servicio
             </h2>
-            <p className="font-body text-sm text-navy/60">
+            <p className={`font-body text-sm text-navy/60 transition-all duration-700 delay-200
+                           ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-3'}`}>
               Cuatro líneas especializadas para abarcar toda la cadena operativa.
             </p>
           </div>
-          <div className="w-8 h-8 rounded bg-gold flex items-center justify-center flex-shrink-0 ml-4">
+          <div className={`w-8 h-8 rounded bg-gold flex items-center justify-center flex-shrink-0 ml-4
+                           transition-all duration-500 delay-300
+                           ${inView ? 'opacity-100 scale-100' : 'opacity-0 scale-75'}`}>
             <ArrowDownLeft size={16} className="text-white" />
           </div>
         </div>
@@ -219,13 +230,24 @@ function WhyUs() {
   return (
     <section className="py-16 px-6 bg-navy">
       <div className="max-w-7xl mx-auto">
-        <div
-          ref={ref}
-          className={`text-center mb-10 transition-all duration-700
-                      ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
-        >
-          <div className="section-eyebrow justify-center">¿Por qué elegirnos?</div>
-          <h2 className="section-title-white mt-2">Ventajas competitivas</h2>
+        <div ref={ref} className="text-center mb-10">
+          {/* Eyebrow con líneas que crecen desde el centro */}
+          <div className="flex items-center justify-center gap-3 mb-3">
+            <span className={`block h-px bg-gold flex-shrink-0 transition-all duration-500
+                             ${inView ? 'w-8 opacity-100' : 'w-0 opacity-0'}`} />
+            <span className={`font-body font-bold text-xs tracking-[4px] uppercase text-gold
+                             transition-all duration-500 delay-100
+                             ${inView ? 'opacity-100' : 'opacity-0'}`}>
+              ¿Por qué elegirnos?
+            </span>
+            <span className={`block h-px bg-gold flex-shrink-0 transition-all duration-500
+                             ${inView ? 'w-8 opacity-100' : 'w-0 opacity-0'}`} />
+          </div>
+          {/* Título desliza desde abajo */}
+          <h2 className={`section-title-white transition-all duration-700 delay-200
+                          ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
+            Ventajas competitivas
+          </h2>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {FEATURES.map((f, i) => <FeatureCard key={i} feature={f} index={i} />)}

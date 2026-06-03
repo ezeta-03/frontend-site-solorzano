@@ -5,22 +5,22 @@ import ContactSection from '@/components/sections/ContactSection'
 import { useInView } from '@/hooks/useInView'
 import { CLIENT_LOGOS } from '@/data/constants'
 
-import heroImg      from '@/img/carousel/item3.webp'
+import heroImg    from '@/img/mineria/hero_mineria.webp'
+import imgMin1    from '@/img/mineria/1_supervision_carguio.webp'
+import imgMin2    from '@/img/mineria/2_traslado_material.webp'
+import imgMin3    from '@/img/mineria/3_traslado_concentrado.webp'
+import imgMin4    from '@/img/mineria/4_traslado_res_peligrosos.webp'
+import imgMin5    from '@/img/mineria/5_traslado_personal.webp'
+import imgMin6    from '@/img/mineria/6_alquiler_maquinaria.webp'
 import movTierraImg from '@/img/services/mov_de_tierra.webp'
-import imgMin1      from '@/img/projects/minería/1_minera_pan.jpg'
-import imgMin2      from '@/img/projects/minería/2_el_brocal.webp'
-import imgCisterna  from '@/img/maquinaria/cisterna.webp'
-import imgTransporte from '@/img/maquinaria/transporte.webp'
-import imgVolquetes from '@/img/maquinaria/volquetes.webp'
-import imgEquipos   from '@/img/maquinaria/equipos_pesados.webp'
 
 const SUB_SERVICES = [
-  { id: 1, title: 'Supervisión y Carguío',       description: 'Control integral del proceso de carga con operadores certificados.',          image: imgMin1,      servicio: 'Transporte y acarreo minero' },
-  { id: 2, title: 'Traslado de Mineral',          description: 'Transporte seguro de minerales desde extracción hasta planta.',               image: imgMin2,      servicio: 'Transporte y acarreo minero' },
-  { id: 3, title: 'Traslado de Concentrado',      description: 'Manejo especializado de concentrados con cisterna certificada.',              image: imgCisterna,  servicio: 'Transporte y acarreo minero' },
-  { id: 4, title: 'Transporte de Res. Peligrosos',description: 'Transporte de residuos peligrosos con protocolos DREM.',                     image: imgVolquetes, servicio: 'Transporte y acarreo minero' },
-  { id: 5, title: 'Transporte de Personal',       description: 'Movilización de personal con buses y camionetas 4x4.',                       image: imgTransporte,servicio: 'Transporte de personal' },
-  { id: 6, title: 'Alquiler de Maquinaria',       description: 'Excavadoras, volquetes y más en alquiler con o sin operador.',               image: imgEquipos,   servicio: 'Alquiler de maquinarias pesadas' },
+  { id: 1, title: 'Supervisión y Carguío',       description: 'Control integral del proceso de carga con operadores certificados.',          image: imgMin1, servicio: 'Transporte y acarreo minero' },
+  { id: 2, title: 'Traslado de Mineral',          description: 'Transporte seguro de minerales desde extracción hasta planta.',               image: imgMin2, servicio: 'Transporte y acarreo minero' },
+  { id: 3, title: 'Traslado de Concentrado',      description: 'Manejo especializado de concentrados con cisterna certificada.',              image: imgMin3, servicio: 'Transporte y acarreo minero' },
+  { id: 4, title: 'Transporte de Res. Peligrosos',description: 'Transporte de residuos peligrosos con protocolos DREM.',                     image: imgMin4, servicio: 'Transporte y acarreo minero' },
+  { id: 5, title: 'Transporte de Personal',       description: 'Movilización de personal con buses y camionetas 4x4.',                       image: imgMin5, servicio: 'Transporte de personal' },
+  { id: 6, title: 'Alquiler de Maquinaria',       description: 'Excavadoras, volquetes y más en alquiler con o sin operador.',               image: imgMin6, servicio: 'Alquiler de maquinarias pesadas' },
 ]
 
 // ── Hero ──────────────────────────────────────────────────────────────────────
@@ -67,15 +67,15 @@ function ServiceRow({ service, index }) {
                   transition-all duration-700 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
       style={{ transitionDelay: `${index * 80}ms` }}
     >
-      <div className="w-2/5 flex-shrink-0 h-48">
+      <Link to={`/cotizar?servicio=${encodeURIComponent(service.servicio)}`} className="w-2/5 flex-shrink-0 h-48 block overflow-hidden">
         <img
           src={service.image}
           alt={service.title}
           loading="lazy"
           decoding="async"
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
         />
-      </div>
+      </Link>
       <div className="flex-1 p-6 flex flex-col justify-between">
         <div>
           <h3 className="font-heading font-bold text-lg text-navy mb-2">{service.title}</h3>

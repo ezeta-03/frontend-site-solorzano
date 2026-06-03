@@ -1,5 +1,16 @@
 import { Link } from 'react-router-dom'
 import footerLogo from '@/img/logos/logo-solorzano-footer.png'
+import iconFb from '@/img/logos/redes/fb.png'
+import iconIg from '@/img/logos/redes/ig.png'
+import iconLd from '@/img/logos/redes/ld.png'
+import iconWa from '@/img/logos/redes/wa.png'
+
+const SOCIAL = [
+  { icon: iconFb, label: 'Facebook',  href: 'https://www.facebook.com/profile.php?id=61573234172364' },
+  { icon: iconIg, label: 'Instagram', href: 'https://www.instagram.com/solorzanogroup_ms/?hl=es' },
+  { icon: iconLd, label: 'LinkedIn',  href: '#' },
+  { icon: iconWa, label: 'WhatsApp',  href: '#' },
+]
 
 const MENU = [
   { label: 'Nosotros', href: '/nosotros' },
@@ -84,14 +95,17 @@ export default function Footer() {
           © {new Date().getFullYear()} SOLORZANO M&S S.A.C. Todos los derechos reservados.
         </p>
         <div className="flex gap-3">
-          {['F', 'I', 'in', 'YT'].map((s) => (
+          {SOCIAL.map((s) => (
             <a
-              key={s}
-              href="#"
-              className="w-7 h-7 rounded-full bg-white/5 hover:bg-gold transition-colors duration-200
-                         flex items-center justify-center text-[9px] font-bold text-white/40 hover:text-white"
+              key={s.label}
+              href={s.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={s.label}
+              className="w-7 h-7 rounded-full bg-white/10 hover:bg-gold transition-colors duration-200
+                         flex items-center justify-center p-1.5"
             >
-              {s}
+              <img src={s.icon} alt={s.label} className="w-full h-full object-contain" />
             </a>
           ))}
         </div>

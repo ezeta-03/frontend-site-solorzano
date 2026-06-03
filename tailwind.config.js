@@ -20,7 +20,7 @@ export default {
       },
       fontFamily: {
         heading: ['"Barlow Condensed"', 'sans-serif'],
-        body: ['"Barlow"', 'sans-serif'],
+        body: ['"Arimo"', 'sans-serif'],
       },
       animation: {
         'nav-fade-in':    'navFadeIn 0.5s ease both',

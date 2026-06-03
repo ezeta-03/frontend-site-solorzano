@@ -1,4 +1,6 @@
 import ProjectsSection from '@/components/sections/ProjectsSection'
+import ContactSection from '@/components/sections/ContactSection'
+import { GitCommitHorizontal } from 'lucide-react'
 
 export default function Proyectos({ tab }) {
   return (
@@ -14,6 +16,7 @@ export default function Proyectos({ tab }) {
         </div>
       </div>
       <ProjectsSection />
+      <ContactSection />
     </div>
   )
 }

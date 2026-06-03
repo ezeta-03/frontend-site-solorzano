@@ -1,0 +1,63 @@
+// ─────────────────────────────────────────────────────────────────────────────
+//  SOLORZANO M&S — Font Definitions
+//  Arimo Variable Font (local) · Barlow Condensed (Google Fonts, titles only)
+// ─────────────────────────────────────────────────────────────────────────────
+
+// ── @font-face ────────────────────────────────────────────────────────────────
+@font-face {
+  font-family: 'Arimo';
+  src: url('../fonts/Arimo-VariableFont_wght.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Arimo';
+  src: url('../fonts/Arimo-Italic-VariableFont_wght.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+// ── CSS Custom Properties ─────────────────────────────────────────────────────
+:root {
+  // Familias
+  --font-body:    'Arimo', sans-serif;
+  --font-heading: 'Barlow Condensed', sans-serif;
+
+  // Pesos
+  --fw-regular:   400;
+  --fw-medium:    500;
+  --fw-semibold:  600;
+  --fw-bold:      700;
+  --fw-black:     900;
+
+  // Tamaños de texto
+  --text-xs:   0.75rem;   //  12px
+  --text-sm:   0.875rem;  //  14px
+  --text-base: 1rem;      //  16px
+  --text-lg:   1.125rem;  //  18px
+  --text-xl:   1.25rem;   //  20px
+  --text-2xl:  1.5rem;    //  24px
+  --text-3xl:  1.875rem;  //  30px
+  --text-4xl:  2.25rem;   //  36px
+  --text-5xl:  3rem;      //  48px
+  --text-6xl:  3.75rem;   //  60px
+  --text-7xl:  4.5rem;    //  72px
+
+  // Colores de marca
+  --color-gold:      #E8A020;
+  --color-gold-dark: #C88010;
+  --color-gold-light:#F0B84A;
+  --color-navy:      #0D1B2E;
+  --color-navy-2:    #1E3A55;
+  --color-navy-light:#2A4F70;
+  --color-gray-site: #F5F5F5;
+
+  // Interlineado
+  --leading-tight:   1.1;
+  --leading-snug:    1.3;
+  --leading-normal:  1.5;
+  --leading-relaxed: 1.7;
+}

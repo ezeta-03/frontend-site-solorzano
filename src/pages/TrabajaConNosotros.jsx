@@ -4,11 +4,12 @@ import StatsSection from '@/components/sections/StatsSection'
 import { useInView } from '@/hooks/useInView'
 import { CLIENT_LOGOS } from '@/data/constants'
 
-import heroImg  from '@/img/projects/minería/1_minera_pan.jpg'
-import imgJob1  from '@/img/transporte/maquinaria_en_accion/1.webp'
-import imgJob2  from '@/img/transporte/equipos_pesados/FLOTA_MOTONIVELADORA JHON DEERE 620 G.webp'
-import imgJob3  from '@/img/transporte/maquinaria_en_accion/2.webp'
-import imgJob4  from '@/img/projects/minería/1_minera_pan.jpg'
+import heroImg  from '@/img/trabaja_con_nosotros/hero_trabaja_con_nosotros.webp'
+import imgJob1  from '@/img/trabaja_con_nosotros/job01.webp'
+import imgJob2  from '@/img/trabaja_con_nosotros/job02.webp'
+import imgJob3  from '@/img/trabaja_con_nosotros/job03.webp'
+import imgJob4  from '@/img/trabaja_con_nosotros/job04.jpg'
+import ContactSection from '../components/sections/ContactSection'
 
 const JOBS = [
   { title: 'Operador de Excavadora',    location: 'Junín', time: 'Tiempo completo', regime: 'Régimen 20x10', image: imgJob1 },
@@ -334,7 +335,8 @@ function ProcesoSeleccion() {
             <div key={i} className="flex items-start gap-4">
               <div className="flex flex-col items-center flex-shrink-0">
                 <div className="w-10 h-10 rounded-full bg-gold flex items-center justify-center
-                                font-heading font-black text-white text-sm z-10">
+                                font-heading font-black text-white text-sm z-10
+                                transition-transform duration-200 hover:scale-125 cursor-default">
                   {step.n}
                 </div>
                 {i < PROCESO.length - 1 && (
@@ -359,7 +361,8 @@ function ProcesoSeleccion() {
                 <div className="absolute top-5 left-1/2 w-full h-px bg-gray-200" />
               )}
               <div className="relative z-10 w-10 h-10 rounded-full bg-gold flex items-center justify-center
-                              font-heading font-black text-white text-sm mb-4">
+                              font-heading font-black text-white text-sm mb-4
+                              transition-transform duration-200 hover:scale-125 cursor-default">
                 {step.n}
               </div>
               <h4 className="font-heading font-bold text-sm text-navy mb-2 leading-tight px-1 uppercase">
@@ -402,6 +405,7 @@ export default function TrabajaConNosotros() {
       <PerfilBeneficios />
       <ProcesoSeleccion />
       <ClientLogos />
+      <ContactSection />
     </>
   )
 }

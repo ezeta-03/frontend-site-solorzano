@@ -2,6 +2,17 @@ import { useState, useEffect } from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
 import { ChevronDown, Menu, X, ArrowRight } from 'lucide-react'
 import logoImg from '@/img/logos/logo-solorzano-nav.png'
+import iconFb from '@/img/logos/redes/fb.png'
+import iconIg from '@/img/logos/redes/ig.png'
+import iconLd from '@/img/logos/redes/ld.png'
+import iconWa from '@/img/logos/redes/wa.png'
+
+const SOCIAL = [
+  { icon: iconFb, label: 'Facebook',  href: 'https://www.facebook.com/profile.php?id=61573234172364' },
+  { icon: iconIg, label: 'Instagram', href: 'https://www.instagram.com/solorzanogroup_ms/?hl=es' },
+  { icon: iconLd, label: 'LinkedIn',  href: '#' },
+  { icon: iconWa, label: 'WhatsApp',  href: '#' },
+]
 
 const NAV_LINKS = [
   { label: 'Servicios', href: '/servicios' },
@@ -39,16 +50,16 @@ export default function Navbar() {
     <>
       {/* Social top bar */}
       <div className="bg-navy hidden md:flex items-center justify-end px-8 py-1.5 gap-3">
-        {['facebook', 'instagram', 'linkedin', 'youtube'].map((s) => (
+        {SOCIAL.map((s) => (
           <a
-            key={s}
-            href={`https://${s}.com`}
+            key={s.label}
+            href={s.href}
             target="_blank"
             rel="noopener noreferrer"
-            className="w-5 h-5 rounded-full bg-white/10 hover:bg-gold transition-colors duration-200 flex items-center justify-center"
-            aria-label={s}
+            className="w-6 h-6 rounded-full bg-white/10 hover:bg-gold transition-colors duration-200 flex items-center justify-center p-1"
+            aria-label={s.label}
           >
-            <span className="text-[8px] text-white font-bold uppercase">{s[0]}</span>
+            <img src={s.icon} alt={s.label} className="w-full h-full object-contain" />
           </a>
         ))}
       </div>

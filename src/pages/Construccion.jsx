@@ -5,24 +5,24 @@ import ContactSection from '@/components/sections/ContactSection'
 import { useInView } from '@/hooks/useInView'
 import { CLIENT_LOGOS } from '@/data/constants'
 
-import heroImg     from '@/img/carousel/item2.webp'
+import heroImg     from '@/img/construccion/hero_construccion.webp'
 import movTierraImg from '@/img/services/mov_de_tierra.webp'
-import imgCon1     from '@/img/projects/construcción/1_volcan.webp'
-import imgCon2     from '@/img/projects/construcción/2_cacray.png'
-import imgCon3     from '@/img/projects/construcción/3_alpamarca.webp'
-import imgConst    from '@/img/services/construcción.webp'
-import imgItem4    from '@/img/carousel/item4.webp'
-import imgEquipos  from '@/img/maquinaria/equipos_pesados.webp'
-import imgVol      from '@/img/maquinaria/volquetes.webp'
+import imgCon1     from '@/img/construccion/1_obras_civiles.webp'
+import imgCon2     from '@/img/construccion/2_obras_pequenas.webp'
+import imgCon3     from '@/img/construccion/3_presas_diques.webp'
+import imgCon4     from '@/img/construccion/4_mantenimientos.webp'
+import imgCon5     from '@/img/construccion/5_infraestructura_vial.webp'
+import imgCon6     from '@/img/construccion/6_obras_concreto.webp'
+import imgCon7     from '@/img/construccion/7_montajes.webp'
 
 const SUB_SERVICES = [
-  { id: 1, title: 'Obras civiles',        description: 'Ejecución integral de infraestructura cumpliendo altos estándares técnicos y operativos.',  image: imgCon1,   servicio: 'Obras civiles y construcción' },
-  { id: 2, title: 'Obras pequeñas',       description: 'Desarrollo de soluciones constructivas rápidas, precisas y adaptadas a cada proyecto.',      image: imgCon2,   servicio: 'Obras civiles y construcción' },
-  { id: 3, title: 'Presas y diques',      description: 'Construcción y reforzamiento de estructuras de contención seguras y controladas.',           image: imgCon3,   servicio: 'Obras civiles y construcción' },
-  { id: 4, title: 'Mantenimientos',       description: 'Servicios de mantenimiento que garantizan continuidad operativa y óptimo rendimiento.',       image: imgConst,  servicio: 'Mantenimiento de vías' },
-  { id: 5, title: 'Infraestructura vial', description: 'Construcción y mantenimiento de vías garantizando transitabilidad en condiciones exigentes.', image: imgItem4,  servicio: 'Mantenimiento de vías' },
-  { id: 6, title: 'Obras de concreto',    description: 'Construcción de estructuras resistentes con control técnico y materiales de calidad.',        image: imgEquipos,servicio: 'Obras civiles y construcción' },
-  { id: 7, title: 'Montajes',             description: 'Instalación de estructuras y equipos con precisión técnica y seguridad operativa.',           image: imgVol,    servicio: 'Obras civiles y construcción' },
+  { id: 1, title: 'Obras civiles',        description: 'Ejecución integral de infraestructura cumpliendo altos estándares técnicos y operativos.',  image: imgCon1, servicio: 'Obras civiles y construcción' },
+  { id: 2, title: 'Obras pequeñas',       description: 'Desarrollo de soluciones constructivas rápidas, precisas y adaptadas a cada proyecto.',      image: imgCon2, servicio: 'Obras civiles y construcción' },
+  { id: 3, title: 'Presas y diques',      description: 'Construcción y reforzamiento de estructuras de contención seguras y controladas.',           image: imgCon3, servicio: 'Obras civiles y construcción' },
+  { id: 4, title: 'Mantenimientos',       description: 'Servicios de mantenimiento que garantizan continuidad operativa y óptimo rendimiento.',       image: imgCon4, servicio: 'Mantenimiento de vías' },
+  { id: 5, title: 'Infraestructura vial', description: 'Construcción y mantenimiento de vías garantizando transitabilidad en condiciones exigentes.', image: imgCon5, servicio: 'Mantenimiento de vías' },
+  { id: 6, title: 'Obras de concreto',    description: 'Construcción de estructuras resistentes con control técnico y materiales de calidad.',        image: imgCon6, servicio: 'Obras civiles y construcción' },
+  { id: 7, title: 'Montajes',             description: 'Instalación de estructuras y equipos con precisión técnica y seguridad operativa.',           image: imgCon7, servicio: 'Obras civiles y construcción' },
 ]
 
 // ── Hero ──────────────────────────────────────────────────────────────────────
@@ -69,15 +69,15 @@ function ServiceRow({ service, index }) {
                   transition-all duration-700 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
       style={{ transitionDelay: `${index * 80}ms` }}
     >
-      <div className="w-2/5 flex-shrink-0 h-48">
+      <Link to={`/cotizar?servicio=${encodeURIComponent(service.servicio)}`} className="w-2/5 flex-shrink-0 h-48 block overflow-hidden">
         <img
           src={service.image}
           alt={service.title}
           loading="lazy"
           decoding="async"
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
         />
-      </div>
+      </Link>
       <div className="flex-1 p-6 flex flex-col justify-between">
         <div>
           <h3 className="font-heading font-bold text-lg text-navy mb-2">{service.title}</h3>

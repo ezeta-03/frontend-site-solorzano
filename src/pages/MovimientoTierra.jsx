@@ -6,12 +6,12 @@ import { useInView } from '@/hooks/useInView'
 import { CLIENT_LOGOS } from '@/data/constants'
 
 import heroImg   from '@/img/carousel/item4.webp'
-import imgSrv1   from '@/img/projects/construcción/1_volcan.webp'
-import imgSrv2   from '@/img/projects/minería/2_el_brocal.webp'
-import imgSrv3   from '@/img/maquinaria/maq_principal.webp'
-import imgSrv4   from '@/img/projects/construcción/2_cacray.png'
-import imgSrv5   from '@/img/projects/transporte/2_minera_volcan.png'
-import imgSrv6   from '@/img/maquinaria/equipos_pesados.webp'
+import imgSrv1   from '@/img/movimiento_tierra/srv01.webp'
+import imgSrv2   from '@/img/movimiento_tierra/srv02.webp'
+import imgSrv3   from '@/img/movimiento_tierra/srv03.webp'
+import imgSrv4   from '@/img/movimiento_tierra/srv04.webp'
+import imgSrv5   from '@/img/movimiento_tierra/srv05.webp'
+import imgSrv6   from '@/img/movimiento_tierra/srv06.webp'
 
 const SERVICES = [
   { id: 1, title: 'Demolición y eliminación de desmonte',                    image: imgSrv1, href: '/movimiento-de-tierra/demolicion-desmonte' },
@@ -60,9 +60,10 @@ function HeroBanner() {
 function ServiceCard({ service, index }) {
   const { ref, inView } = useInView(0.1)
   return (
-    <div
+    <Link
       ref={ref}
-      className={`relative rounded-xl overflow-hidden group cursor-pointer
+      to={service.href}
+      className={`relative rounded-xl overflow-hidden group cursor-pointer block
                   transition-all duration-700 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
       style={{ transitionDelay: `${index * 80}ms` }}
     >
@@ -77,9 +78,9 @@ function ServiceCard({ service, index }) {
 
       {/* Top controls */}
       <div className="absolute top-3 left-3">
-        <Link to={service.href} className="btn-pulse text-[10px] px-3 py-1.5 inline-flex items-center gap-1">
+        <span className="btn-pulse text-[10px] px-3 py-1.5 inline-flex items-center gap-1">
           Ver más
-        </Link>
+        </span>
       </div>
       <div className="absolute top-3 right-3 w-7 h-7 rounded bg-gold flex items-center justify-center">
         <ArrowUpRight size={13} className="text-white" />
@@ -91,7 +92,7 @@ function ServiceCard({ service, index }) {
           {service.title}
         </h3>
       </div>
-    </div>
+    </Link>
   )
 }
 

@@ -5,8 +5,8 @@ import { useInView } from '@/hooks/useInView'
 import { CLIENT_LOGOS, SERVICES_LIST } from '@/data/constants'
 import RelatedServicesSection from '@/components/sections/RelatedServicesSection'
 
-import heroImg    from '@/img/projects/construcción/2_cacray.png'
-import contentImg from '@/img/projects/construcción/2_cacray.png'
+import heroImg    from '@/img/movimiento_tierra/relleno/hero.webp'
+import contentImg from '@/img/movimiento_tierra/relleno/content.webp'
 
 const FEATURES = [
   {
@@ -54,9 +54,9 @@ function HeroBanner() {
   )
 }
 
-function SideForm() {
+function SideForm({ initialServicio = '' }) {
   const [form, setForm] = useState({
-    nombre: '', empresa: '', email: '', telefono: '', servicio: '', descripcion: '',
+    nombre: '', empresa: '', email: '', telefono: '', servicio: initialServicio, descripcion: '',
   })
   const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value })
   const handleSubmit = (e) => {
@@ -195,7 +195,7 @@ function Content() {
           </div>
 
           <div className="w-full lg:w-80 lg:flex-shrink-0 lg:sticky lg:top-24">
-            <SideForm />
+            <SideForm initialServicio="Movimiento de tierras" />
           </div>
         </div>
       </div>

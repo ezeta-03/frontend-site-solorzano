@@ -1,10 +1,11 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { ArrowDownLeft, ChevronLeft, ChevronRight } from 'lucide-react'
-import HeroSection from '@/components/sections/HeroSection'
+import { ArrowUpRight, ArrowDownLeft, ChevronLeft, ChevronRight } from 'lucide-react'
 import StatsSection from '@/components/sections/StatsSection'
-import ContactSection from '@/components/sections/ContactSection'
 import { useInView } from '@/hooks/useInView'
+import heroTransporte from '@/img/transporte/hero_transporte.webp'
+import movTierraImg   from '@/img/movimiento_tierra/srv03.webp'
+import ContactSection from '@/components/sections/ContactSection'
 import { CLIENT_LOGOS } from '@/data/constants'
 
 // ── Fleet images ──────────────────────────────────────────────────────────────
@@ -61,6 +62,68 @@ const FLEET = {
     { name: 'EXCAVADORA',     model: 'EC380DLC',        specs: [['POTENCIA','125 HP'], ['PESO','15260']],          status: 'consultar', image: imgExcavadora  },
     { name: 'COMPACTADOR',    model: 'COMPACTADOR',     specs: [['POTENCIA','125 HP'], ['PESO','12.23 TONELADAS']], status: 'consultar', image: imgCompactador },
   ],
+}
+
+// ── Hero ──────────────────────────────────────────────────────────────────────
+function HeroBanner() {
+  const { ref, inView } = useInView()
+  return (
+    <div className="relative h-[520px] md:h-[600px] overflow-hidden">
+      <img src={heroTransporte} alt="Flota Solorzano" decoding="async"
+           className="absolute inset-0 w-full h-full object-cover" />
+      <div className="absolute inset-0 bg-gradient-hero" />
+      <div ref={ref}
+           className={`relative z-10 h-full flex flex-col justify-end max-w-7xl mx-auto px-6 pb-16
+                       transition-all duration-700 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
+        <p className="font-body text-[11px] font-bold tracking-[4px] uppercase text-gold mb-2">
+          Sector Transporte
+        </p>
+        <h1 className="font-heading font-black text-5xl md:text-7xl text-white uppercase leading-none mb-3">
+          Trans<span className="text-gold">porte</span>
+        </h1>
+        <p className="font-body text-[13px] text-white/70 mb-5 max-w-sm leading-relaxed">
+          Flota propia para los proyectos más exigentes del país.
+        </p>
+        <Link to="/flota" className="btn-pulse self-start inline-flex items-center gap-2">
+          Ver flota completa <ArrowUpRight size={14} />
+        </Link>
+      </div>
+    </div>
+  )
+}
+
+// ── Movimiento de Tierra section ──────────────────────────────────────────────
+function MovimientoSection() {
+  return (
+    <section className="px-6 pb-10 bg-white">
+      <div className="max-w-7xl mx-auto">
+        <div className="relative rounded-xl overflow-hidden group cursor-pointer">
+          <img src={movTierraImg} alt="Movimiento de Tierra" loading="lazy" decoding="async"
+               className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105" />
+          <div className="absolute inset-0 bg-gradient-card" />
+          <div className="absolute top-4 right-4 w-8 h-8 rounded bg-gold flex items-center justify-center">
+            <ArrowUpRight size={14} className="text-white" />
+          </div>
+          <div className="absolute bottom-0 left-0 right-0 p-6 flex items-end justify-between">
+            <div>
+              <h3 className="font-heading font-bold text-xl text-white uppercase mb-3">
+                Movimiento de tierra
+              </h3>
+              <Link to="/movimiento-de-tierra" className="btn-hover text-xs px-4 py-2 inline-flex items-center gap-1.5">
+                Ver más <ArrowUpRight size={12} />
+              </Link>
+            </div>
+            <div className="flex gap-2">
+              {['Minería', 'Construcción'].map((tag) => (
+                <span key={tag} className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded
+                                           bg-navy/80 text-white border border-white/20">{tag}</span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
 }
 
 // ── "Maquinaria en Acción" section ────────────────────────────────────────────
@@ -259,10 +322,11 @@ function ClientLogos() {
 export default function Flota() {
   return (
     <>
-      <HeroSection initialSlide={4} />
+      <HeroBanner />
       <StatsSection />
       <MaquinariaSection />
       <FleetCatalog />
+      <MovimientoSection />
       <ClientLogos />
       <ContactSection />
     </>
