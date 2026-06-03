@@ -23,11 +23,16 @@ import imgExcavadora  from '@/img/transporte/equipos_pesados/FLOTA_EC380DLC.webp
 import imgCompactador from '@/img/transporte/equipos_pesados/FLOTA_COMPACTADOR.webp'
 
 // ── Carousel hero images ───────────────────────────────────────────────────────
-import carousel1 from '@/img/transporte/maquinaria_en_accion/1.webp'
-import carousel2 from '@/img/transporte/maquinaria_en_accion/2.webp'
-import carousel3 from '@/img/transporte/maquinaria_en_accion/3.webp'
+import carousel1 from '@/img/transporte/maquinaria_en_accion/01_EN_ACCION.webp'
+import carousel2 from '@/img/transporte/maquinaria_en_accion/02_EN_ACCION.webp'
+import carousel3 from '@/img/transporte/maquinaria_en_accion/03_EN_ACCION.webp'
+import carousel4 from '@/img/transporte/maquinaria_en_accion/04_EN_ACCION.webp'
+import carousel5 from '@/img/transporte/maquinaria_en_accion/05_EN_ACCION.webp'
+import carousel6 from '@/img/transporte/maquinaria_en_accion/06_EN_ACCION.webp'
+import carousel7 from '@/img/transporte/maquinaria_en_accion/07_EN_ACCION.webp'
+import carousel8 from '@/img/transporte/maquinaria_en_accion/08_EN_ACCION.webp'
 
-const CAROUSEL_IMGS = [carousel1, carousel2, carousel3]
+const CAROUSEL_IMGS = [carousel1, carousel2, carousel3, carousel4, carousel5, carousel6, carousel7, carousel8]
 
 // ── Fleet data ────────────────────────────────────────────────────────────────
 const TABS = [

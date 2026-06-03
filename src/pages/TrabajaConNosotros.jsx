@@ -16,7 +16,7 @@ const JOBS = [
   { title: 'Operador de Motoniveladora',location: 'Junín', time: 'Tiempo completo', regime: 'Régimen 14x7',  image: imgJob2 },
   { title: 'Conductor de Volquete',     location: 'Junín', time: 'Tiempo completo', regime: 'Régimen 14x7',  image: imgJob3 },
   { title: 'Técnico en HSE',            location: 'Junín', time: 'Tiempo completo', regime: 'Con experiencia', image: imgJob4 },
-  { title: 'Otro puesto',            location: 'Junín', time: 'Tiempo completo', regime: 'otro puesto', image: imgJob4 },
+  // { title: 'Otro puesto',            location: 'Junín', time: 'Tiempo completo', regime: 'otro puesto', image: imgJob4 },
 ]
 
 const PERFIL = [
