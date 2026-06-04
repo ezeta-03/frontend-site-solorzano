@@ -5,9 +5,9 @@ export default {
     extend: {
       colors: {
         gold: {
-          DEFAULT: '#E8A020',
-          light: '#F0B84A',
-          dark: '#C88010',
+          DEFAULT: '#ae8f51',
+          light: '#c4a96d',
+          dark:  '#8a7040',
         },
         navy: {
           DEFAULT: '#0D1B2E',
@@ -59,9 +59,9 @@ export default {
           '100%': { opacity: '1', transform: 'scale(1)' },
         },
         pulseRing: {
-          '0%':   { boxShadow: '0 0 0 0 rgba(232,160,32,0.6)' },
-          '70%':  { boxShadow: '0 0 0 20px rgba(232,160,32,0)' },
-          '100%': { boxShadow: '0 0 0 0 rgba(232,160,32,0)' },
+          '0%':   { boxShadow: '0 0 0 0 rgba(174,143,81,0.6)' },
+          '70%':  { boxShadow: '0 0 0 20px rgba(174,143,81,0)' },
+          '100%': { boxShadow: '0 0 0 0 rgba(174,143,81,0)' },
         },
         logoFade: {
           from: { opacity: '0', transform: 'translateY(10px)' },
@@ -93,8 +93,8 @@ export default {
         'gradient-card': 'linear-gradient(to top, rgba(13,27,46,0.95) 0%, transparent 60%)',
       },
       boxShadow: {
-        gold: '0 4px 20px rgba(232,160,32,0.15)',
-        'gold-lg': '0 8px 40px rgba(232,160,32,0.25)',
+        gold: '0 4px 20px rgba(174,143,81,0.15)',
+        'gold-lg': '0 8px 40px rgba(174,143,81,0.25)',
         card: '0 4px 24px rgba(0,0,0,0.12)',
       },
     },
